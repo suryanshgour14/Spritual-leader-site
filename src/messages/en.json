@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "Home",
+    "katha": "Katha",
+    "sevaKarya": "Services",
+    "ashram": "Ashram",
+    "seva": "Seva",
+    "satsang": "Satsang",
+    "gallery": "Gallery",
+    "programs": "Programs",
+    "vicharDhara": "Wisdom",
+    "daan": "Daan",
+    "sampark": "Contact",
+    "sevaKarein": "Seva Karein"
+  },
+  "hero": {
+    "title": "Sadhvi Samahita Ji",
+    "subtitle": "Didi Maa's Beloved Disciple · Katha Vachak · Ashram Sanchalika · Motivational Speaker · Shri Dham Vrindavan",
+    "cta_darshan": "Darshan →",
+    "cta_satsang": "Listen to Satsang →",
+    "live_badge": "🔴 LIVE"
+  },
+  "about": {
+    "heading": "About",
+    "subheading": "Parichay | परिचय",
+    "bio": "Pujya Sadhvi Samahita Ji is the beloved disciple of Param Pujya Didi Maa Sadhvi Ritambhara Ji. She is the sanchalika of Radhika Ashray in Shri Dham Vrindavan, and through her inspiring katha vachana, she touches the hearts of millions of devotees.",
+    "read_more": "Read More →"
+  },
+  "services": {
+    "heading": "Services",
+    "subheading": "Spiritual Services | सेवाएँ",
+    "book_cta": "Book Now",
+    "items": {
+      "bhagavat": "Shrimadbhagavat Katha",
+      "ram": "Ram Katha",
+      "shiv": "Shiv Mahapuran Katha",
+      "devi": "Devi Bhagvat Katha",
+      "bhajan": "Bhajan Sandhya",
+      "sunderkand": "Sunderkand Path",
+      "motivational": "Motivational Speaker"
+    }
+  },
+  "contact": {
+    "heading": "Contact Us",
+    "subheading": "संपर्क करें",
+    "booking_heading": "Katha Booking",
+    "form_name": "Your Name",
+    "form_city": "City",
+    "form_state": "State",
+    "form_date": "Preferred Date",
+    "form_katha_type": "Type of Katha",
+    "form_attendees": "Expected Attendees",
+    "form_phone": "Phone Number",
+    "form_venue": "Venue / Address",
+    "form_duration": "Duration (days)",
+    "form_message": "Additional Message",
+    "form_submit": "Submit",
+    "success": "Your message has been sent successfully. We will contact you soon. 🙏",
+    "whatsapp_followup": "Continue on WhatsApp"
+  },
+  "footer": {
+    "tagline": "।। Jai Shri Krishna ।। Jai Shri Radhe ।।",
+    "location": "Shri Dham Vrindavan",
+    "rights": "All Rights Reserved",
+    "quick_links": "Quick Links",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "whatsapp": {
+    "tooltip": "Contact for Katha Booking | Book a Katha",
+    "prefilled_message": "Namaste Didi Ji, I want to know about Katha booking.",
+    "share": "Share on WhatsApp",
+    "mobile_bar": "📞 Book Katha — WhatsApp Us"
+  },
+  "live": {
+    "banner_text": "Didi Ji is LIVE NOW | दीदी जी अभी लाइव हैं",
+    "watch_now": "Watch Now →"
+  },
+  "common": {
+    "loading": "Loading...",
+    "close": "Close",
+    "menu": "Menu",
+    "share": "Share",
+    "readMore": "Read More →",
+    "viewAll": "View All →",
+    "bookNow": "Book Now",
+    "listen": "Listen",
+    "watch": "Watch",
+    "donate": "Seva Karein"
+  },
+  "cta": {
+    "sevaKarein": "Seva Karein",
+    "bookNow": "Book Now",
+    "listen": "Listen to Satsang →",
+    "watch": "Watch →",
+    "share": "Share",
+    "darshan": "Darshan →",
+    "register": "Register Now",
+    "support": "Support Now"
+  },
+  "stats": {
+    "years": "10",
+    "years_label": "Years of Seva",
+    "kathas": "500",
+    "kathas_label": "Kathas Conducted",
+    "devotees": "1000000",
+    "devotees_label": "Devotees Touched",
+    "cities": "100",
+    "cities_label": "Cities Blessed"
+  },
+  "home": {
+    "hero_badge": "Shri Dham Vrindavan",
+    "hero_title": "Sadhvi Samahita Ji",
+    "hero_subtitle": "Beloved disciple of Param Pujya Didi Maa Sadhvi Ritambhara Ji · Katha Vachak · Ashram Sanchalika · Shri Dham Vrindavan",
+    "about_label": "About Didi Ji",
+    "katha_label": "Kathas & Services",
+    "katha_subtitle": "Invite Sadhvi Samahita Ji for a katha or spiritual program at your city",
+    "seva_label": "Seva Karya",
+    "seva_subtitle": "Seva flowing through Radhika Ashray, Vrindavan",
+    "testimonials_label": "What Devotees Say",
+    "testimonials_subtitle": "Experiences of those who attended Didi Ji's kathas",
+    "book_cta_title": "Invite Didi Ji for Katha",
+    "book_cta_subtitle": "To organize Shrimadbhagavat Katha, Ram Katha, or any spiritual program — contact us on WhatsApp",
+    "book_cta_btn": "Book on WhatsApp",
+    "scroll_hint": "Scroll to know more",
+    "identity": "Disciple of Didi Maa · Katha Vachak · Ashram Sanchalika"
+  },
+  "daily_vichar": {
+    "heading": "Today's Wisdom",
+    "share": "Share on WhatsApp"
+  },
+  "upcoming_event": {
+    "heading": "Upcoming Program",
+    "register": "Register Now"
+  },
+  "seva": {
+    "heading": "Social Work",
+    "gaushala": "Gau Seva",
+    "annadaan": "Annadaan Seva",
+    "ashram": "Ashram Nirman",
+    "support_cta": "Support Now"
+  },
+  "daan": {
+    "heading": "Seva ka Bhav — Har Katare Mein Prem",
+    "select_amount": "Select Amount"
+  },
+  "quiz": {
+    "heading": "Spiritual Quiz",
+    "start": "Start Quiz",
+    "next": "Next →",
+    "submit": "See Result",
+    "share": "Share Result"
+  },
+  "gallery": {
+    "heading": "Gallery",
+    "tab_didi": "Didi ke Darshan",
+    "tab_ashram": "Ashram",
+    "tab_katha": "Katha Mahotsav"
+  },
+  "satsang": {
+    "heading": "Satsang",
+    "subheading": "Watch All Kathas",
+    "view_all": "View All Kathas →"
+  },
+  "testimonials": {
+    "heading": "Devotee Testimonials",
+    "subheading": "श्रद्धालुओं के उद्गार"
+  },
+  "social": {
+    "follow": "Follow",
+    "subscribe": "Subscribe",
+    "youtube_label": "YouTube",
+    "facebook_label": "Facebook",
+    "instagram_label": "Instagram"
+  }
+}

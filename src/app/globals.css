@@ -1,26 +1,88 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #FFF8E8;
+    background-image: url('/images/textures/lotus-pattern.svg');
+    background-size: 120px 120px;
+    background-repeat: repeat;
+    color: #2E1000;
+    overflow-x: hidden;
+  }
+  ::selection { background: #F2C94C; color: #2E1000; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #FFF8E8; }
+  ::-webkit-scrollbar-thumb { background: #D4860A; border-radius: 3px; }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-saffron-500 text-cream-50 font-medium rounded-lg
+           transition-all duration-300 hover:bg-saffron-600
+           hover:shadow-[0_0_24px_rgba(212,134,10,0.5)];
+  }
+  .btn-outline {
+    @apply px-6 py-3 border border-gold-300 text-gold-300 rounded-lg
+           backdrop-blur-sm transition-all duration-300
+           hover:bg-gold-300/10 hover:border-gold-200;
+  }
+  .section-padding { @apply py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-16; }
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  .gold-divider {
+    @apply w-24 h-0.5 bg-gradient-to-r from-transparent via-gold-300 to-transparent mx-auto my-4;
+  }
+  .spiritual-card {
+    background: linear-gradient(135deg, rgba(255,248,232,0.9) 0%, rgba(255,240,200,0.6) 100%);
+    border: 1px solid rgba(242, 201, 76, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  .spiritual-card:hover {
+    border-color: rgba(242, 201, 76, 0.5);
+    box-shadow:
+      0 0 20px rgba(212, 134, 10, 0.12),
+      0 0 60px rgba(212, 134, 10, 0.06),
+      inset 0 1px 0 rgba(242, 201, 76, 0.2);
+    transform: translateY(-2px);
+  }
+  .vignette-overlay {
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(13,5,0,0.4) 100%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Diya flame flicker */
+@keyframes diya-flicker {
+  0%,100% { transform: scaleX(1) scaleY(1) translateY(0px) rotate(0deg); opacity: 1; }
+  15%     { transform: scaleX(0.88) scaleY(1.1) translateY(-1.5px) rotate(-1.5deg); opacity: 0.93; }
+  30%     { transform: scaleX(1.08) scaleY(0.94) translateY(1px) rotate(2deg); opacity: 0.88; }
+  50%     { transform: scaleX(0.94) scaleY(1.06) translateY(-2px) rotate(-1deg); opacity: 0.96; }
+  70%     { transform: scaleX(1.05) scaleY(0.97) translateY(0.5px) rotate(1.5deg); opacity: 0.9; }
+  85%     { transform: scaleX(0.92) scaleY(1.08) translateY(-1px) rotate(-0.5deg); opacity: 0.95; }
+}
+.diya-flame { animation: diya-flicker 1.9s ease-in-out infinite; will-change: transform; }
+
+/* Devanagari text rendering */
+.font-devanagari, [class*="font-devanagari"] {
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+  line-height: 1.8;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-ltr,
+  .animate-marquee-rtl,
+  .animate-float-up,
+  .animate-smoke-rise { animation: none; }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

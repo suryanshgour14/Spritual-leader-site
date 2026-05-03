@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "होम",
+    "katha": "कथा",
+    "sevaKarya": "सेवा कार्य",
+    "ashram": "आश्रम",
+    "seva": "सेवा",
+    "satsang": "सत्संग",
+    "gallery": "गैलरी",
+    "programs": "कार्यक्रम",
+    "vicharDhara": "विचार धारा",
+    "daan": "दान",
+    "sampark": "संपर्क",
+    "sevaKarein": "सेवा करें"
+  },
+  "hero": {
+    "title": "साध्वी समाहिता जी",
+    "subtitle": "दीदी माँ की प्रिय शिष्या · कथा वाचिका · आश्रम संचालिका · प्रेरक वक्ता · श्री धाम वृंदावन",
+    "cta_darshan": "दर्शन करें →",
+    "cta_satsang": "सत्संग सुनें →",
+    "live_badge": "🔴 LIVE"
+  },
+  "about": {
+    "heading": "परिचय",
+    "subheading": "About Sadhvi Samahita Ji",
+    "bio": "पूज्या साध्वी समाहिता जी, परम पूज्या दीदी माँ साध्वी ऋतंभरा जी की प्रिय शिष्या हैं। वे श्री धाम वृंदावन में स्थित राधिका आश्रय की संचालिका हैं और अपने प्रेरक कथा वाचन से लाखों श्रद्धालुओं के हृदय को स्पर्श करती हैं।",
+    "read_more": "और जानें →"
+  },
+  "services": {
+    "heading": "सेवाएँ",
+    "subheading": "Spiritual Services",
+    "book_cta": "बुकिंग करें",
+    "items": {
+      "bhagavat": "श्रीमद्भागवत कथा",
+      "ram": "राम कथा",
+      "shiv": "शिव महापुराण कथा",
+      "devi": "देवी भागवत कथा",
+      "bhajan": "भजन संध्या",
+      "sunderkand": "सुंदरकांड पाठ",
+      "motivational": "Motivational Speaker"
+    }
+  },
+  "contact": {
+    "heading": "संपर्क करें",
+    "subheading": "Contact Us",
+    "booking_heading": "कथा बुकिंग",
+    "form_name": "आपका नाम",
+    "form_city": "शहर",
+    "form_state": "राज्य",
+    "form_date": "संभावित तिथि",
+    "form_katha_type": "कथा का प्रकार",
+    "form_attendees": "अनुमानित श्रद्धालु",
+    "form_phone": "फ़ोन नंबर",
+    "form_venue": "स्थान/पता",
+    "form_duration": "अवधि (दिन)",
+    "form_message": "संदेश",
+    "form_submit": "भेजें",
+    "success": "आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही संपर्क करेंगे। 🙏",
+    "whatsapp_followup": "WhatsApp पर संपर्क करें"
+  },
+  "footer": {
+    "tagline": "।। जय श्री कृष्णा ।। जय श्री राधे ।।",
+    "location": "श्री धाम वृन्दावन",
+    "rights": "सर्वाधिकार सुरक्षित",
+    "quick_links": "त्वरित लिंक",
+    "services": "सेवाएँ",
+    "contact": "संपर्क"
+  },
+  "whatsapp": {
+    "tooltip": "कथा बुकिंग के लिए संपर्क करें",
+    "prefilled_message": "नमस्ते दीदी जी, मैं कथा बुकिंग के बारे में जानना चाहता/चाहती हूँ।",
+    "share": "WhatsApp पर साझा करें",
+    "mobile_bar": "📞 कथा बुकिंग — WhatsApp करें"
+  },
+  "live": {
+    "banner_text": "दीदी जी अभी लाइव हैं | Didi Ji is LIVE NOW",
+    "watch_now": "सुनें | Watch Now →"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "close": "बंद करें",
+    "menu": "मेनू",
+    "share": "साझा करें",
+    "readMore": "और पढ़ें →",
+    "viewAll": "सभी देखें →",
+    "bookNow": "बुकिंग करें",
+    "listen": "सुनें",
+    "watch": "देखें",
+    "donate": "सेवा करें"
+  },
+  "cta": {
+    "sevaKarein": "सेवा करें",
+    "bookNow": "बुकिंग करें",
+    "listen": "सत्संग सुनें →",
+    "watch": "देखें →",
+    "share": "साझा करें",
+    "darshan": "दर्शन करें →",
+    "register": "पंजीकरण करें",
+    "support": "सहयोग करें"
+  },
+  "stats": {
+    "years": "10",
+    "years_label": "वर्षों की सेवा",
+    "kathas": "500",
+    "kathas_label": "कथाएँ आयोजित",
+    "devotees": "1000000",
+    "devotees_label": "श्रद्धालु लाभान्वित",
+    "cities": "100",
+    "cities_label": "शहर धन्य हुए"
+  },
+  "home": {
+    "hero_badge": "श्री धाम वृन्दावन",
+    "hero_title": "साध्वी समाहिता जी",
+    "hero_subtitle": "परम पूज्या दीदी माँ साध्वी ऋतंभरा जी की प्रिय शिष्या · कथा वाचिका · आश्रम संचालिका · श्री धाम वृन्दावन",
+    "about_label": "दीदी जी का परिचय",
+    "katha_label": "कथाएँ एवं सेवाएँ",
+    "katha_subtitle": "अपने शहर में साध्वी समाहिता जी को कथा या आध्यात्मिक कार्यक्रम के लिए आमंत्रित करें",
+    "seva_label": "सेवा कार्य",
+    "seva_subtitle": "राधिका आश्रय, वृन्दावन के माध्यम से सेवा का प्रवाह",
+    "testimonials_label": "श्रद्धालुओं के उद्गार",
+    "testimonials_subtitle": "दीदी जी की कथाओं में भाग लेने वालों के अनुभव",
+    "book_cta_title": "कथा के लिए दीदी जी को आमंत्रित करें",
+    "book_cta_subtitle": "श्रीमद्भागवत कथा, राम कथा या किसी भी आध्यात्मिक कार्यक्रम के आयोजन के लिए WhatsApp पर संपर्क करें",
+    "book_cta_btn": "WhatsApp पर बुकिंग करें",
+    "scroll_hint": "और जानने के लिए स्क्रॉल करें",
+    "identity": "दीदी माँ की शिष्या · कथा वाचिका · आश्रम संचालिका"
+  },
+  "daily_vichar": {
+    "heading": "आज का विचार",
+    "share": "WhatsApp पर साझा करें"
+  },
+  "upcoming_event": {
+    "heading": "आगामी कार्यक्रम",
+    "register": "पंजीकरण करें"
+  },
+  "seva": {
+    "heading": "सेवा कार्य",
+    "gaushala": "गौ सेवा",
+    "annadaan": "अन्नदान सेवा",
+    "ashram": "आश्रम निर्माण",
+    "support_cta": "सहयोग करें"
+  },
+  "daan": {
+    "heading": "सेवा का भाव – हर कतरे में प्रेम",
+    "select_amount": "राशि चुनें"
+  },
+  "quiz": {
+    "heading": "आध्यात्मिक प्रश्नोत्तरी",
+    "start": "प्रश्नोत्तरी शुरू करें",
+    "next": "अगला →",
+    "submit": "परिणाम देखें",
+    "share": "परिणाम साझा करें"
+  },
+  "gallery": {
+    "heading": "गैलरी",
+    "tab_didi": "दीदी के दर्शन",
+    "tab_ashram": "आश्रम",
+    "tab_katha": "कथा महोत्सव"
+  },
+  "satsang": {
+    "heading": "सत्संग",
+    "subheading": "Watch All Kathas",
+    "view_all": "सभी कथाएँ सुनें →"
+  },
+  "testimonials": {
+    "heading": "श्रद्धालुओं के उद्गार",
+    "subheading": "Devotee Testimonials"
+  },
+  "social": {
+    "follow": "अनुसरण करें",
+    "subscribe": "सब्सक्राइब करें",
+    "youtube_label": "YouTube",
+    "facebook_label": "Facebook",
+    "instagram_label": "Instagram"
+  }
+}

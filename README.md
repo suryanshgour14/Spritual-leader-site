@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sadhvi Samahita Ji — Official Website
 
-## Getting Started
+Official website for Sadhvi Samahita Didi, katha vachak and spiritual guide based in Shri Dham Vrindavan.
 
-First, run the development server:
+## Requirements
+
+- Node.js 18+
+- npm 9+
+
+## Setup
 
 ```bash
+# Install dependencies
+npm install
+
+# Copy env file and fill in your values
+cp .env.local.example .env.local
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) — loads in Hindi by default.  
+English version: [http://localhost:3000/en](http://localhost:3000/en)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.local.example` to `.env.local` and fill in:
 
-## Learn More
+| Variable | Description |
+|---|---|
+| `YOUTUBE_API_KEY` | YouTube Data API v3 key (for live detection + satsang page) |
+| `YOUTUBE_CHANNEL_ID` | Didi's YouTube channel ID (from channel URL) |
+| `EMAILJS_SERVICE_ID` | EmailJS service ID (for contact form) |
+| `EMAILJS_TEMPLATE_ID` | EmailJS template ID |
+| `EMAILJS_PUBLIC_KEY` | EmailJS public key |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Primary WhatsApp number (no `+`, e.g. `918650620909`) |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER_2` | Secondary WhatsApp number |
+| `NEXT_PUBLIC_EMAIL` | Contact email address |
 
-To learn more about Next.js, take a look at the following resources:
+## Full Specification
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `CLAUDE.md` for the complete project specification including:
+- Tech stack details
+- Color palette and design tokens
+- Page-by-page spec
+- Folder structure
+- Component specs
+- i18n (Hindi/English) setup
+- Content JSON schemas
+- Mobile responsiveness rules

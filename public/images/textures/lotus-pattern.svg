@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <g fill="none" stroke="#D4860A" stroke-width="0.6" opacity="0.045">
+    <!-- Central top petal -->
+    <path d="M60 18 C60 18 50 34 50 44 C50 52 54 58 60 58 C66 58 70 52 70 44 C70 34 60 18 60 18 Z"/>
+    <!-- Upper right petal -->
+    <path d="M88 30 C88 30 72 38 68 48 C65 55 68 62 74 64 C80 66 87 62 89 55 C92 46 88 30 88 30 Z"/>
+    <!-- Upper left petal -->
+    <path d="M32 30 C32 30 48 38 52 48 C55 55 52 62 46 64 C40 66 33 62 31 55 C28 46 32 30 32 30 Z"/>
+    <!-- Lower right petal -->
+    <path d="M88 80 C88 80 72 70 66 60 C63 54 66 48 72 46 C78 44 86 48 88 55 C91 64 88 80 88 80 Z"/>
+    <!-- Lower left petal -->
+    <path d="M32 80 C32 80 48 70 54 60 C57 54 54 48 48 46 C42 44 34 48 32 55 C29 64 32 80 32 80 Z"/>
+    <!-- Bottom petal -->
+    <path d="M60 92 C60 92 50 76 50 66 C50 58 54 52 60 52 C66 52 70 58 70 66 C70 76 60 92 60 92 Z"/>
+    <!-- Center circle -->
+    <circle cx="60" cy="56" r="8"/>
+    <!-- Stem dot -->
+    <circle cx="60" cy="104" r="2"/>
+    <line x1="60" y1="92" x2="60" y2="102"/>
+  </g>
+</svg>
