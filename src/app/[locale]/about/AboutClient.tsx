@@ -308,7 +308,7 @@ export default function AboutClient() {
               <div className="md:col-span-2 grid grid-cols-2 gap-4">
                 {[
                   { num: '500+', label: 'Kathas', labelHi: 'कथाएँ' },
-                  { num: '10+', label: 'Years', labelHi: 'वर्ष' },
+                  { num: '16+', label: 'Years', labelHi: 'वर्ष' },
                   { num: '100+', label: 'Cities', labelHi: 'शहर' },
                   { num: '10L+', label: 'Devotees', labelHi: 'श्रद्धालु' },
                 ].map((s, i) => (
