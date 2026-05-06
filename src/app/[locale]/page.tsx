@@ -81,7 +81,7 @@ function TypeWriter({
   text, delay = 0, speed = 55, goldGradient = false, className = '',
 }: { text: string; delay?: number; speed?: number; goldGradient?: boolean; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const isInView = useInView(ref, { once: true })
   const [charCount, setCharCount] = useState(0)
 
   useEffect(() => {
@@ -103,7 +103,11 @@ function TypeWriter({
 
   return (
     <span ref={ref} className={className}
-      style={goldGradient ? { color: '#F2C94C' } : undefined}>
+      style={{
+        ...(goldGradient ? { color: '#F2C94C' } : {}),
+        display: 'inline-block',
+        minHeight: '1.2em',
+      }}>
       {displayed}
       {isTyping && (
         <motion.span

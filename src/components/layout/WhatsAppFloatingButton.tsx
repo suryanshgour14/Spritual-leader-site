@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { usePathname } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { useMediaQuery } from '@/lib/hooks/useMediaQuery'
+import { useFooterVisible } from '@/lib/hooks/useFooterVisible'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919999649311'
 const WA_MESSAGE = encodeURIComponent(
@@ -14,9 +15,13 @@ export default function WhatsAppFloatingButton() {
   const pathname = usePathname()
   const t = useTranslations('whatsapp')
   const isMobile = useMediaQuery('(max-width: 768px)')
+  const footerVisible = useFooterVisible()
 
   // Hide on /daan page
   if (pathname === '/daan' || pathname.endsWith('/daan')) return null
+
+  // Hide on mobile when footer is in view
+  if (isMobile && footerVisible) return null
 
   const size = isMobile ? 48 : 56
 

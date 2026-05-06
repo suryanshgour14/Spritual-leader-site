@@ -1,6 +1,7 @@
 'use client'
 import { usePathname } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
+import { useFooterVisible } from '@/lib/hooks/useFooterVisible'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919999649311'
 const WA_MESSAGE = encodeURIComponent(
@@ -11,9 +12,13 @@ const WA_URL = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`
 export default function MobileBottomBar() {
   const pathname = usePathname()
   const t = useTranslations('whatsapp')
+  const footerVisible = useFooterVisible()
 
   // Hide on /daan page
   if (pathname === '/daan' || pathname.endsWith('/daan')) return null
+
+  // Hide when footer is in view
+  if (footerVisible) return null
 
   return (
     <a

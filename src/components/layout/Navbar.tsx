@@ -75,7 +75,7 @@ export default function Navbar() {
             <Link
               href="/"
               className="flex items-center gap-2 flex-shrink-0"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
             >
               <Image src="/didi-logo.svg" alt="Logo" width={36} height={36} className="rounded-full flex-shrink-0" />
               <span className={cn(
