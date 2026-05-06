@@ -5,6 +5,7 @@
 @layer base {
   html { scroll-behavior: auto; /* Lenis handles smooth scroll — browser smooth-scroll conflicts with it */ }
   body {
+    position: relative;
     background-color: #FFF8E8;
     background-image: url('/images/textures/lotus-pattern.svg');
     background-size: 120px 120px;
@@ -60,7 +61,10 @@
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0);   }
 }
-.page-enter { animation: page-enter 0.28s cubic-bezier(0.22,1,0.36,1) both; }
+/* "backwards" (not "both") — ensures no transform persists after animation ends.
+   "both" leaves transform:translateY(0) on the element permanently, which creates
+   a CSS stacking context that breaks position:fixed descendants (lightbox, modals). */
+.page-enter { animation: page-enter 0.28s cubic-bezier(0.22,1,0.36,1) backwards; }
 
 /* ─── Glow orbs — replaces Framer Motion infinite opacity loops ───────────── */
 @keyframes glow-orb-pulse {

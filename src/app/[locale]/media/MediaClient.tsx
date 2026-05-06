@@ -1,5 +1,6 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const FB_URL = 'https://www.facebook.com/SadhviSamahitaDidi'
@@ -71,19 +72,124 @@ const gallery = [
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971911/img254_uiituf.jpg',
 ]
 
+// ── Lightbox — rendered via portal to escape any transformed ancestor ─────────
+function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
+  const [imgLoaded, setImgLoaded] = useState(false)
+  const scrollYRef = useRef(0)
+
+  // Scroll lock — iOS Safari compatible
+  useEffect(() => {
+    scrollYRef.current = window.scrollY
+    document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollYRef.current}px`
+    document.body.style.width = '100%'
+
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      window.scrollTo({ top: scrollYRef.current, behavior: 'instant' })
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [onClose])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      // Portal renders at body level — no transformed ancestor can break fixed positioning
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '16px',
+        background: 'rgba(0,0,0,0.93)',
+        cursor: 'pointer',
+      }}
+      onClick={onClose}
+    >
+      {/* Loading indicator — shown while image is fetching */}
+      {!imgLoaded && (
+        <div style={{
+          width: 40, height: 40, borderRadius: '50%',
+          border: '2px solid rgba(255,255,255,0.15)',
+          borderTopColor: 'rgba(242,201,76,0.8)',
+          animation: 'spin 0.8s linear infinite',
+          position: 'absolute',
+        }} />
+      )}
+
+      <motion.img
+        key={src}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: imgLoaded ? 1 : 0, scale: imgLoaded ? 1 : 0.9 }}
+        exit={{ opacity: 0, scale: 0.94 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        src={cloudUrl(src, 1600)}
+        alt="Full size"
+        onLoad={() => setImgLoaded(true)}
+        style={{
+          maxWidth: '95vw',
+          maxHeight: '90vh',
+          objectFit: 'contain',
+          borderRadius: 8,
+          boxShadow: '0 25px 60px rgba(0,0,0,0.6)',
+          cursor: 'default',
+          display: 'block',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      />
+
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        style={{
+          position: 'absolute',
+          top: 20,
+          right: 20,
+          width: 44,
+          height: 44,
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(255,255,255,0.12)',
+          border: 'none',
+          color: '#fff',
+          cursor: 'pointer',
+          transition: 'background 0.2s',
+          zIndex: 1,
+        }}
+        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.22)')}
+        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.12)')}
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2"
+            strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+    </motion.div>
+  )
+}
+
 export default function MediaClient() {
   const [lightbox, setLightbox] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    if (!lightbox) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null) }
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [lightbox])
+  useEffect(() => { setMounted(true) }, [])
+
+  const close = useCallback(() => setLightbox(null), [])
 
   return (
     <div className="min-h-screen bg-stone-50 overflow-x-hidden">
@@ -215,48 +321,13 @@ export default function MediaClient() {
         </a>
       </div>
 
-      {/* ── LIGHTBOX ────────────────────────────── */}
-      <AnimatePresence>
-        {lightbox && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 cursor-pointer"
-            style={{ background: 'rgba(0,0,0,0.93)' }}
-            onClick={() => setLightbox(null)}
-          >
-            <motion.img
-              key={lightbox}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.94 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              src={cloudUrl(lightbox, 1600)}
-              alt="Full size"
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
-              onClick={(e) => e.stopPropagation()}
-            />
-
-            {/* Close button */}
-            <button
-              onClick={() => setLightbox(null)}
-              className="absolute top-5 right-5 w-11 h-11 rounded-full flex items-center justify-center
-                text-white transition-colors duration-200"
-              style={{ background: 'rgba(255,255,255,0.12)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.22)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.12)')}
-              aria-label="Close"
-            >
-              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
-                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2"
-                  strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ── LIGHTBOX — rendered via React Portal at document.body ── */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {lightbox && <Lightbox src={lightbox} onClose={close} />}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   )
 }
