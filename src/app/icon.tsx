@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Maroon rounded square background -->
+import { ImageResponse } from 'next/og'
+
+export const size = { width: 32, height: 32 }
+export const contentType = 'image/png'
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="12" fill="#7B1414"/>
-  <!-- Outer gold ring -->
-  <circle cx="32" cy="32" r="28" fill="none" stroke="#F2C94C" stroke-width="1"/>
-  <!-- 8 lotus petals: alternating saffron tones -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#F2C94C" stroke-width="1.5"/>
   <g transform="translate(32,32)">
     <ellipse cx="0" cy="-16" rx="4" ry="7.5" fill="#E8912A" transform="rotate(0)"/>
     <ellipse cx="0" cy="-16" rx="4" ry="7.5" fill="#C86820" transform="rotate(45)"/>
@@ -14,9 +16,20 @@
     <ellipse cx="0" cy="-16" rx="4" ry="7.5" fill="#E8912A" transform="rotate(270)"/>
     <ellipse cx="0" cy="-16" rx="4" ry="7.5" fill="#C86820" transform="rotate(315)"/>
   </g>
-  <!-- Center circle -->
-  <circle cx="32" cy="32" r="9.5" fill="#5C0F0F"/>
-  <circle cx="32" cy="32" r="9.5" fill="none" stroke="#F2C94C" stroke-width="0.8"/>
-  <!-- ॐ symbol -->
-  <text x="32" y="37" text-anchor="middle" font-size="12" fill="#F2C94C" font-family="serif">ॐ</text>
-</svg>
+  <circle cx="32" cy="32" r="10" fill="#5C0F0F"/>
+  <circle cx="32" cy="32" r="10" fill="none" stroke="#F2C94C" stroke-width="1.5"/>
+</svg>`
+
+export default function Icon() {
+  return new ImageResponse(
+    (
+      <div style={{ width: 32, height: 32, display: 'flex' }}>
+        <img
+          src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`}
+          style={{ width: 32, height: 32 }}
+        />
+      </div>
+    ),
+    { ...size },
+  )
+}

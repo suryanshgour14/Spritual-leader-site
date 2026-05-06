@@ -1,0 +1,12 @@
+{
+  "name": "Sadhvi Samahita Ji",
+  "short_name": "Sadhvi Ji",
+  "description": "International spiritual orator from Shri Dham Vrindavan",
+  "icons": [
+    { "src": "/apple-icon", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#7B1414",
+  "background_color": "#F5F0E8",
+  "display": "standalone",
+  "start_url": "/"
+}
