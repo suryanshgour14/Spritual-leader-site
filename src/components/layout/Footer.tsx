@@ -1,5 +1,4 @@
-'use client'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
@@ -30,10 +29,10 @@ const serviceLinks = [
   'motivational',
 ] as const
 
-export default function Footer() {
-  const tNav = useTranslations('nav')
-  const tFooter = useTranslations('footer')
-  const tServices = useTranslations('services.items')
+export default async function Footer() {
+  const tNav = await getTranslations('nav')
+  const tFooter = await getTranslations('footer')
+  const tServices = await getTranslations('services.items')
 
   return (
     <footer className="relative bg-maroon-900 text-cream-100 overflow-hidden">

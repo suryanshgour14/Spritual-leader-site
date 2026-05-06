@@ -1,5 +1,4 @@
 'use client'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { useMediaQuery } from '@/lib/hooks/useMediaQuery'
 
@@ -54,7 +53,7 @@ export default function GlowOrbs({ variant = 'saffron', positions, className }: 
       {orbs.map((orb, i) => {
         const size = isMobile ? orb.size * 0.5 : orb.size
         return (
-          <motion.div
+          <div
             key={i}
             className={cn('absolute rounded-full', color)}
             style={{
@@ -65,12 +64,10 @@ export default function GlowOrbs({ variant = 'saffron', positions, className }: 
               right: orb.right,
               bottom: orb.bottom,
               filter: 'blur(80px)',
-              // Promote to own compositing layer — avoids triggering layout on every frame
               willChange: 'opacity',
               transform: 'translateZ(0)',
+              animation: `glow-orb-pulse ${orb.duration}s ease-in-out ${i * 2}s infinite`,
             }}
-            animate={{ opacity: [0.07, 0.14, 0.07] }}
-            transition={{ duration: orb.duration, repeat: Infinity, ease: 'easeInOut', delay: i * 2 }}
           />
         )
       })}

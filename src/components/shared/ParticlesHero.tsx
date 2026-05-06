@@ -27,19 +27,24 @@ export default function ParticlesHero({
   id = 'tsparticles',
 }: ParticlesHeroProps) {
   const [init, setInit] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    ensureEngine().then(() => setInit(true))
+    const mobile = window.innerWidth < 768
+    setIsMobile(mobile)
+    if (mobile) return
+
+    const ric = (window as any).requestIdleCallback ?? ((cb: any) => setTimeout(cb, 1500))
+    const ricId = ric(() => ensureEngine().then(() => setInit(true)), { timeout: 3000 })
+    return () => ((window as any).cancelIdleCallback ?? clearTimeout)(ricId)
   }, [])
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const particleCount = useMemo(() => {
+    if (variant === 'subtle') return Math.min(count, 10)
+    if (variant === 'stardust') return Math.min(count, 45)
+    return Math.min(count, 50)
+  }, [variant, count])
 
-  // Cap particle counts for performance — desktop gets slightly fewer than requested
-  let particleCount = variant === 'subtle' ? Math.min(count, 10) : Math.min(count, 50)
-  if (variant === 'stardust') particleCount = isMobile ? 25 : Math.min(count, 45)
-  else if (isMobile) return null
-
-  // Memoize options so the Particles component doesn't re-initialize on parent re-renders
   const options = useMemo(() => {
     if (variant === 'stardust') {
       return {
@@ -94,10 +99,9 @@ export default function ParticlesHero({
       interactivity: { events: { onHover: { enable: false }, onClick: { enable: false } } },
       detectRetina: false,
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variant, particleCount])
 
-  if (!init) return null
+  if (isMobile || !init) return null
 
   return (
     <Particles

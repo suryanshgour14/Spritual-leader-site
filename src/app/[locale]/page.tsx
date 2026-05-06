@@ -10,8 +10,8 @@ import RevealWrapper from '@/components/shared/RevealWrapper'
 import CountUp from '@/components/shared/CountUp'
 import DiyaCluster from '@/components/scenes/layers/DiyaCluster'
 import SacredPhotoFrame from '@/components/shared/SacredPhotoFrame'
-import VaaniSection from '@/components/shared/VaaniSection'
-import KathaSection from '@/components/shared/KathaSection'
+const KathaSection = dynamic(() => import('@/components/shared/KathaSection'), { ssr: false })
+const VaaniSection = dynamic(() => import('@/components/shared/VaaniSection'), { ssr: false })
 import { cn } from '@/lib/utils'
 
 const ParticlesHero = dynamic(
@@ -64,15 +64,14 @@ function StarField({ count = 60 }: { count?: number }) {
 // ─── 4-pointed sparkle ────────────────────────────────────────────────────────
 function Sparkle({ size = 18, className = '', delay = 0 }: { size?: number; className?: string; delay?: number }) {
   return (
-    <motion.div
+    <div
       className={cn('absolute pointer-events-none z-10', className)}
-      animate={{ opacity: [0.15, 1, 0.15], scale: [0.6, 1.15, 0.6] }}
-      transition={{ duration: 2.8, repeat: Infinity, delay, ease: 'easeInOut' }}
+      style={{ animation: `sparkle-pulse 2.8s ease-in-out ${delay}s infinite` }}
     >
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
         <path d="M12 1 L13.8 10.2 L23 12 L13.8 13.8 L12 23 L10.2 13.8 L1 12 L10.2 10.2 Z" fill="rgba(242,201,76,0.9)" />
       </svg>
-    </motion.div>
+    </div>
   )
 }
 
@@ -110,14 +109,15 @@ function TypeWriter({
       }}>
       {displayed}
       {isTyping && (
-        <motion.span
-          animate={{ opacity: [1, 0] }}
-          transition={{ duration: 0.45, repeat: Infinity, ease: 'easeInOut' }}
+        <span
           className="inline-block ml-0.5 align-middle"
-          style={goldGradient
-            ? { width: 3, height: '0.82em', background: '#F2C94C', display: 'inline-block' }
-            : { width: 3, height: '0.82em', background: 'currentColor', display: 'inline-block' }
-          }
+          style={{
+            width: 3,
+            height: '0.82em',
+            background: goldGradient ? '#F2C94C' : 'currentColor',
+            display: 'inline-block',
+            animation: 'tw-cursor-blink 0.9s ease-in-out infinite',
+          }}
         />
       )}
     </span>
@@ -270,51 +270,46 @@ export default function HomePage() {
           style={{ y: contentY, opacity: contentO }}
           className="relative z-10 text-center px-4 max-w-4xl mx-auto"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
               border border-gold-300/30 bg-gold-300/10 backdrop-blur-sm mb-6"
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0s both' }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-gold-300 animate-pulse" />
             <span className="text-gold-300 text-xs font-body tracking-widest uppercase">
               {tHome('hero_badge')}
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          <h1
             className="font-devanagari leading-tight mb-4"
             style={{
               fontSize: 'clamp(2.6rem, 8vw, 6rem)',
               background: 'linear-gradient(135deg, #F2C94C 0%, #FFD066 40%, #D4860A 70%, #F2C94C 100%)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              animation: 'hero-fade-up 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s both',
             }}
           >
             साध्वी समाहिता जी
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          <p
             className="font-body text-base md:text-lg text-gold-300/80 mb-2 tracking-widest uppercase"
+            style={{ animation: 'hero-fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both' }}
           >
             International Spiritual Orator · Katha Vachak · Vrindavan
-          </motion.p>
+          </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          <p
             className="font-body text-sm md:text-base text-cream-300/60 mb-10 max-w-xl mx-auto leading-relaxed"
+            style={{ animation: 'hero-fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 0.42s both' }}
           >
             Sadhvi Samahita Ji spreads devotion and spiritual wisdom through Bhagavat Katha, Ram Katha, and Shiv Mahapuran.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.56, ease: [0.22, 1, 0.36, 1] }}
+          <div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
+            style={{ animation: 'hero-fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 0.56s both' }}
           >
             <Link href="/media"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-body font-medium
@@ -331,32 +326,29 @@ export default function HomePage() {
               <span className="font-devanagari">कथा बुकिंग</span>
               <span>→</span>
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+          <div
             className="flex justify-center pointer-events-none"
+            style={{ animation: 'hero-fade-up 1.0s cubic-bezier(0.22,1,0.36,1) 0.9s both' }}
           >
             <DiyaCluster count={7} />
-          </motion.div>
+          </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
           style={{ opacity: contentO }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none"
         >
-          <motion.div animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          <div
+            style={{ animation: 'hero-bounce 1.6s ease-in-out infinite' }}
             className="flex flex-col items-center gap-1">
             <div className="w-px h-6 bg-gradient-to-b from-gold-300/0 to-gold-300/50" />
             <svg viewBox="0 0 16 10" width="14" height="9" fill="none" className="text-gold-300/60">
               <path d="M 1,1 L 8,8 L 15,1" stroke="currentColor" strokeWidth="1.8"
                 strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
 
@@ -400,23 +392,17 @@ export default function HomePage() {
                   <div className="absolute inset-0 pointer-events-none"
                     style={{ borderRadius: '180px 180px 20px 20px', border: '2px solid rgba(242,201,76,0.45)',
                       boxShadow: '0 0 40px rgba(212,134,10,0.35),0 0 80px rgba(212,134,10,0.12),inset 0 0 30px rgba(212,134,10,0.06)' }} />
-                  <motion.div className="absolute pointer-events-none"
+                  <div className="absolute pointer-events-none"
                     style={{
                       inset: -4,
                       borderRadius: '184px 184px 24px 24px',
                       background: 'linear-gradient(180deg, rgba(242,201,76,0.55) 0%, rgba(212,134,10,0.18) 45%, transparent 75%)',
+                      animation: 'photo-frame-glow 4s ease-in-out infinite',
                     }}
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                   />
-                  <motion.div className="absolute pointer-events-none"
-                    style={{ inset: -2, borderRadius: '182px 182px 22px 22px', border: '1.5px solid rgba(242,201,76,0.5)' }}
-                    animate={{ opacity: [0.4, 0.9, 0.4], boxShadow: [
-                      '0 0 12px rgba(242,201,76,0.2), 0 -16px 32px rgba(242,201,76,0.15)',
-                      '0 0 28px rgba(242,201,76,0.5), 0 -24px 56px rgba(242,201,76,0.3)',
-                      '0 0 12px rgba(242,201,76,0.2), 0 -16px 32px rgba(242,201,76,0.15)',
-                    ]}}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  <div className="absolute pointer-events-none"
+                    style={{ inset: -2, borderRadius: '182px 182px 22px 22px', border: '1.5px solid rgba(242,201,76,0.5)',
+                      animation: 'photo-ring-pulse 4s ease-in-out infinite' }}
                   />
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}

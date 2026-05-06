@@ -55,6 +55,52 @@
   }
 }
 
+/* ─── Page transition ─────────────────────────────────────────────────────── */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.page-enter { animation: page-enter 0.28s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ─── Glow orbs — replaces Framer Motion infinite opacity loops ───────────── */
+@keyframes glow-orb-pulse {
+  0%, 100% { opacity: 0.07; }
+  50%       { opacity: 0.14; }
+}
+
+/* ─── Hero entrance — CSS so LCP fires without waiting for JS hydration ────── */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+/* Scroll indicator bounce */
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0);  }
+  50%       { transform: translateY(8px); }
+}
+
+/* ─── Sparkle 4-point star pulse ─────────────────────────────────────────── */
+@keyframes sparkle-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(0.6);  }
+  50%       { opacity: 1;    transform: scale(1.15); }
+}
+
+/* ─── Typewriter cursor blink ────────────────────────────────────────────── */
+@keyframes tw-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ─── Photo arch frame pulsing ───────────────────────────────────────────── */
+@keyframes photo-frame-glow {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1;   }
+}
+@keyframes photo-ring-pulse {
+  0%, 100% { opacity: 0.4; box-shadow: 0 0 12px rgba(242,201,76,0.2), 0 -16px 32px rgba(242,201,76,0.15); }
+  50%       { opacity: 0.9; box-shadow: 0 0 28px rgba(242,201,76,0.5), 0 -24px 56px rgba(242,201,76,0.3);  }
+}
+
 /* KathaSection background glow — CSS replaces Framer Motion infinite loops */
 @keyframes katha-glow-scale {
   0%, 100% { transform: scale(1);    opacity: 0.7; }

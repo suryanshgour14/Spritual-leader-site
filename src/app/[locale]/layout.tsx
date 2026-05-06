@@ -25,12 +25,14 @@ const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
+  preload: false,
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -151,6 +153,11 @@ export default async function LocaleLayout({
       className={`${tiroDevanagari.variable} ${dmSerif.variable} ${inter.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
