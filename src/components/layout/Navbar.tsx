@@ -3,23 +3,21 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Phone, Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { Link, usePathname } from '@/i18n/navigation'
 import LanguageToggle from './LanguageToggle'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '/', key: 'home' },
-  { href: '/katha', key: 'katha' },
-  { href: '/seva-karya', key: 'sevaKarya' },
-  { href: '/ashram', key: 'ashram' },
-  { href: '/seva', key: 'seva' },
-  { href: '/satsang', key: 'satsang' },
-  { href: '/gallery', key: 'gallery' },
-  { href: '/programs', key: 'programs' },
-  { href: '/vichar-dhara', key: 'vicharDhara' },
-  { href: '/daan', key: 'daan' },
-  { href: '/sampark', key: 'sampark' },
-] as const
+  { href: '/',        key: 'home'    as const, scrollId: null },
+  { href: '/about',   key: 'about'   as const, scrollId: null },
+  { href: '/katha',   key: 'katha'   as const, scrollId: null },
+  { href: '/#vaani',  key: 'vaani'   as const, scrollId: 'vaani' },
+  { href: '/media',   key: 'media'   as const, scrollId: null },
+  { href: '/seva#donate', key: 'seva' as const, scrollId: null },
+  { href: '/wisdom',  key: 'wisdom'  as const, scrollId: null },
+  { href: '/contact', key: 'contact' as const, scrollId: null },
+]
 
 export default function Navbar() {
   const t = useTranslations('nav')
@@ -42,9 +40,20 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
-  const isActive = (href: string) => {
+  const isActive = (href: string, scrollId: string | null) => {
+    if (scrollId) return false
     if (href === '/') return pathname === '/'
     return pathname.startsWith(href)
+  }
+
+  function handleScrollClick(e: React.MouseEvent, scrollId: string | null) {
+    if (!scrollId) return
+    const el = document.getElementById(scrollId)
+    if (el) {
+      e.preventDefault()
+      el.scrollIntoView({ behavior: 'smooth' })
+      setIsMenuOpen(false)
+    }
   }
 
   return (
@@ -54,7 +63,9 @@ export default function Navbar() {
           'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
           isScrolled
             ? 'bg-maroon-900/95 backdrop-blur-md border-b border-gold-300/20 shadow-lg'
-            : 'bg-transparent'
+            : isMenuOpen
+              ? 'bg-maroon-900 border-b border-gold-300/15'
+              : 'bg-transparent'
         )}
       >
         <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
@@ -66,7 +77,7 @@ export default function Navbar() {
               className="flex items-center gap-2 flex-shrink-0"
               onClick={() => setIsMenuOpen(false)}
             >
-              <span className="text-xl">🪔</span>
+              <Image src="/didi-logo.svg" alt="Logo" width={36} height={36} className="rounded-full flex-shrink-0" />
               <span className={cn(
                 'font-devanagari text-base md:text-lg leading-tight transition-colors duration-300',
                 isScrolled ? 'text-gold-300' : 'text-saffron-700'
@@ -81,9 +92,10 @@ export default function Navbar() {
                 <Link
                   key={link.key}
                   href={link.href}
+                  onClick={(e) => handleScrollClick(e, link.scrollId)}
                   className={cn(
                     'px-2 lg:px-2.5 py-1.5 rounded-md text-xs lg:text-sm font-body transition-all duration-200 whitespace-nowrap min-h-[36px] flex items-center',
-                    isActive(link.href)
+                    isActive(link.href, link.scrollId)
                       ? isScrolled
                         ? 'text-gold-300'
                         : 'text-saffron-600 font-semibold'
@@ -101,7 +113,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-3 flex-shrink-0">
               <LanguageToggle />
               <Link
-                href="/sampark"
+                href="/seva#donate"
                 className={cn(
                   'px-4 py-2 border rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 whitespace-nowrap',
                   isScrolled
@@ -149,11 +161,15 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 bg-maroon-900/98 backdrop-blur-lg flex flex-col md:hidden"
+            className="fixed inset-0 z-50 flex flex-col md:hidden"
+            style={{ background: '#120202' }}
           >
             {/* Close button */}
             <div className="flex items-center justify-between px-4 h-16 border-b border-gold-300/10">
-              <span className="font-devanagari text-gold-300 text-base">साध्वी समाहिता जी</span>
+              <div className="flex items-center gap-2">
+                <Image src="/didi-logo.svg" alt="Logo" width={32} height={32} className="rounded-full" />
+                <span className="font-devanagari text-gold-300 text-base">साध्वी समाहिता जी</span>
+              </div>
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="p-2.5 text-cream-200 hover:text-gold-300 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -174,10 +190,10 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => { handleScrollClick(e, link.scrollId); setIsMenuOpen(false) }}
                     className={cn(
                       'flex items-center py-4 border-b border-gold-300/10 text-base font-devanagari transition-colors min-h-[48px]',
-                      isActive(link.href)
+                      isActive(link.href, link.scrollId)
                         ? 'text-gold-300'
                         : 'text-cream-200 hover:text-gold-300'
                     )}
@@ -192,7 +208,7 @@ export default function Navbar() {
             <div className="px-4 py-6 border-t border-gold-300/10 flex items-center justify-between">
               <LanguageToggle />
               <Link
-                href="/sampark"
+                href="/seva#donate"
                 onClick={() => setIsMenuOpen(false)}
                 className="px-5 py-2.5 bg-saffron-500 text-cream-50 rounded-lg text-sm font-medium
                   hover:bg-saffron-600 transition-colors"

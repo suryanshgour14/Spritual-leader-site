@@ -1,16 +1,13 @@
 {
   "nav": {
-    "home": "होम",
+    "home": "मुख्य पृष्ठ",
+    "about": "परिचय",
     "katha": "कथा",
-    "sevaKarya": "सेवा कार्य",
-    "ashram": "आश्रम",
+    "vaani": "वाणी",
+    "media": "मीडिया",
     "seva": "सेवा",
-    "satsang": "सत्संग",
-    "gallery": "गैलरी",
-    "programs": "कार्यक्रम",
-    "vicharDhara": "विचार धारा",
-    "daan": "दान",
-    "sampark": "संपर्क",
+    "wisdom": "विचार",
+    "contact": "संपर्क",
     "sevaKarein": "सेवा करें"
   },
   "hero": {

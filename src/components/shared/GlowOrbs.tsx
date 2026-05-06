@@ -22,8 +22,8 @@ interface GlowOrbsProps {
 
 const variantColors: Record<OrbVariant, string> = {
   saffron: 'bg-saffron-400/10',
-  maroon: 'bg-maroon-400/10',
-  gold: 'bg-gold-400/12',
+  maroon:  'bg-maroon-400/10',
+  gold:    'bg-gold-400/12',
 }
 
 const defaultPositions: Record<OrbVariant, OrbConfig[]> = {
@@ -41,13 +41,9 @@ const defaultPositions: Record<OrbVariant, OrbConfig[]> = {
   ],
 }
 
-export default function GlowOrbs({
-  variant = 'saffron',
-  positions,
-  className,
-}: GlowOrbsProps) {
+export default function GlowOrbs({ variant = 'saffron', positions, className }: GlowOrbsProps) {
   const isMobile = useMediaQuery('(max-width: 768px)')
-  const orbs = positions ?? defaultPositions[variant]
+  const orbs  = positions ?? defaultPositions[variant]
   const color = variantColors[variant]
 
   return (
@@ -57,7 +53,6 @@ export default function GlowOrbs({
     >
       {orbs.map((orb, i) => {
         const size = isMobile ? orb.size * 0.5 : orb.size
-
         return (
           <motion.div
             key={i}
@@ -69,15 +64,13 @@ export default function GlowOrbs({
               left: orb.left,
               right: orb.right,
               bottom: orb.bottom,
-              filter: 'blur(100px)',
+              filter: 'blur(80px)',
+              // Promote to own compositing layer — avoids triggering layout on every frame
+              willChange: 'opacity',
+              transform: 'translateZ(0)',
             }}
-            animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.15, 0.08] }}
-            transition={{
-              duration: orb.duration,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: i * 2,
-            }}
+            animate={{ opacity: [0.07, 0.14, 0.07] }}
+            transition={{ duration: orb.duration, repeat: Infinity, ease: 'easeInOut', delay: i * 2 }}
           />
         )
       })}

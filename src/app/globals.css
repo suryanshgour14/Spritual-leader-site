@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: auto; /* Lenis handles smooth scroll — browser smooth-scroll conflicts with it */ }
   body {
     background-color: #FFF8E8;
     background-image: url('/images/textures/lotus-pattern.svg');
@@ -53,6 +53,41 @@
   .vignette-overlay {
     background: radial-gradient(ellipse at center, transparent 40%, rgba(13,5,0,0.4) 100%);
   }
+}
+
+/* KathaSection background glow — CSS replaces Framer Motion infinite loops */
+@keyframes katha-glow-scale {
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%       { transform: scale(1.12); opacity: 1;   }
+}
+@keyframes katha-glow-maroon {
+  0%, 100% { transform: scale(1);    opacity: 0.6; }
+  50%       { transform: scale(1.08); opacity: 0.9; }
+}
+@keyframes katha-glow-fade {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1;   }
+}
+
+/* WhatsApp FAB subtle scale pulse — CSS replaces Framer Motion infinite loop */
+@keyframes wa-scale-pulse {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.05); }
+}
+.wa-pulse { animation: wa-scale-pulse 3s ease-in-out infinite; will-change: transform; }
+
+/* Katha section background ken-burns zoom */
+@keyframes katha-kbzoom {
+  from { transform: scale(1)    translate(0, 0); }
+  to   { transform: scale(1.08) translate(-1.5%, 1%); }
+}
+
+/* Katha section gold particle float-up */
+@keyframes katha-floatup {
+  0%   { transform: translateY(0)     scale(1);   opacity: 0;   }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.3; }
+  100% { transform: translateY(-120px) scale(0.3); opacity: 0; }
 }
 
 /* Diya flame flicker */

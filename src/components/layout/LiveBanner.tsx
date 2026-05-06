@@ -1,24 +1,18 @@
 'use client'
 import useSWR from 'swr'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json())
-
-interface LiveStatus {
-  isLive: boolean
-  liveUrl: string | null
-}
+const fetcher = (url: string) => fetch(url).then(r => r.json())
 
 export default function LiveBanner() {
-  const t = useTranslations('live')
-  const { data } = useSWR<LiveStatus>('/api/live-status', fetcher, {
-    refreshInterval: 60_000,
-    revalidateOnFocus: false,
-  })
+  const { data } = useSWR<{ isLive: boolean; liveUrl: string | null }>(
+    '/api/youtube',
+    fetcher,
+    { refreshInterval: 60_000, revalidateOnFocus: false }
+  )
 
-  const isLive = data?.isLive ?? false
-  const liveUrl = data?.liveUrl ?? 'https://youtube.com/@SadhviSamahita'
+  const isLive  = data?.isLive ?? false
+  const liveUrl = data?.liveUrl ?? 'https://www.youtube.com/@SadhviSamahita'
 
   return (
     <AnimatePresence>
@@ -27,19 +21,19 @@ export default function LiveBanner() {
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ y: -50, opacity: 0 }}
+          initial={{ y: -48, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -50, opacity: 0 }}
+          exit={{ y: -48, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="block w-full bg-red-600 text-white py-2 text-center text-sm cursor-pointer
-            hover:bg-red-700 transition-colors duration-200 z-50"
+          className="flex items-center justify-center gap-3 w-full
+            bg-red-600 hover:bg-red-700 text-white py-2.5 text-sm
+            cursor-pointer transition-colors duration-200 z-50"
         >
-          <span className="inline-flex items-center gap-2">
-            <span className="w-2 h-2 bg-white rounded-full animate-pulse flex-shrink-0" />
-            <span>
-              {t('banner_text')} — {t('watch_now')}
-            </span>
+          <span className="w-2 h-2 rounded-full bg-white animate-pulse flex-shrink-0" />
+          <span className="font-body font-semibold">
+            🔴 Live Satsang — Didi Ji is on YouTube right now!
           </span>
+          <span className="font-body text-white/70 hidden sm:inline">Join Now →</span>
         </motion.a>
       )}
     </AnimatePresence>

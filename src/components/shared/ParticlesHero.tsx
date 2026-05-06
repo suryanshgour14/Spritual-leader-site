@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 
@@ -11,9 +11,7 @@ function ensureEngine() {
   if (initPromise) return initPromise
   initPromise = initParticlesEngine(async (engine) => {
     await loadSlim(engine)
-  }).then(() => {
-    engineInitialized = true
-  })
+  }).then(() => { engineInitialized = true })
   return initPromise
 }
 
@@ -36,59 +34,54 @@ export default function ParticlesHero({
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  let particleCount = variant === 'subtle' ? Math.min(count, 10) : count
-  if (variant === 'stardust') particleCount = isMobile ? 30 : count
+  // Cap particle counts for performance — desktop gets slightly fewer than requested
+  let particleCount = variant === 'subtle' ? Math.min(count, 10) : Math.min(count, 50)
+  if (variant === 'stardust') particleCount = isMobile ? 25 : Math.min(count, 45)
   else if (isMobile) return null
 
-  const getOptions = () => {
+  // Memoize options so the Particles component doesn't re-initialize on parent re-renders
+  const options = useMemo(() => {
     if (variant === 'stardust') {
       return {
         fullScreen: { enable: false },
         particles: {
-          number: { value: particleCount, density: { enable: true, area: 800 } },
+          number: { value: particleCount, density: { enable: true, area: 900 } },
           color: { value: ['#F2C94C', '#FFD066', '#FFF3B0', '#ffffff', '#D4860A', '#FFDEA8'] },
           shape: { type: ['star', 'circle'] },
           opacity: {
-            value: { min: 0.05, max: 0.9 },
-            animation: { enable: true, speed: 0.6, sync: false },
+            value: { min: 0.05, max: 0.85 },
+            animation: { enable: true, speed: 0.5, sync: false },
           },
           size: {
-            value: { min: 1, max: 3.5 },
-            animation: { enable: true, speed: 1.5, sync: false },
+            value: { min: 1, max: 3 },
+            animation: { enable: true, speed: 1.2, sync: false },
           },
           move: {
             enable: true,
-            speed: 0.3,
+            speed: 0.25,
             direction: 'none' as const,
             random: true,
             straight: false,
             outModes: { default: 'out' as const },
           },
-          twinkle: {
-            particles: { enable: true, frequency: 0.08, opacity: 1 },
-          },
+          twinkle: { particles: { enable: true, frequency: 0.07, opacity: 1 } },
         },
         interactivity: {
-          events: {
-            onHover: { enable: !isMobile, mode: 'bubble' },
-          },
-          modes: {
-            bubble: { distance: 160, size: 5, duration: 0.5, opacity: 0.9 },
-          },
+          events: { onHover: { enable: false } },
         },
-        detectRetina: true,
+        detectRetina: false,
       }
     }
 
-    const speed = variant === 'subtle' ? 0.3 : 0.6
+    const speed = variant === 'subtle' ? 0.3 : 0.55
     return {
       fullScreen: { enable: false },
       particles: {
-        number: { value: particleCount, density: { enable: true, area: 800 } },
+        number: { value: particleCount, density: { enable: true, area: 900 } },
         color: { value: ['#F2C94C', '#D4860A', '#FFD066'] },
         shape: { type: 'star' },
-        opacity: { value: { min: 0.3, max: 0.7 }, animation: { enable: true, speed: 0.5 } },
-        size: { value: { min: 1.5, max: 3.5 } },
+        opacity: { value: { min: 0.25, max: 0.65 }, animation: { enable: true, speed: 0.4 } },
+        size: { value: { min: 1.5, max: 3 } },
         move: {
           enable: true,
           speed,
@@ -96,19 +89,20 @@ export default function ParticlesHero({
           random: true,
           outModes: { default: 'out' as const },
         },
-        twinkle: { particles: { enable: true, frequency: 0.05, opacity: 1 } },
+        twinkle: { particles: { enable: true, frequency: 0.04, opacity: 1 } },
       },
       interactivity: { events: { onHover: { enable: false }, onClick: { enable: false } } },
-      detectRetina: true,
+      detectRetina: false,
     }
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [variant, particleCount])
 
   if (!init) return null
 
   return (
     <Particles
       id={id}
-      options={getOptions()}
+      options={options}
       className="absolute inset-0 pointer-events-none"
     />
   )

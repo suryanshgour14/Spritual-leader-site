@@ -1,16 +1,13 @@
 {
   "nav": {
     "home": "Home",
+    "about": "About",
     "katha": "Katha",
-    "sevaKarya": "Services",
-    "ashram": "Ashram",
+    "vaani": "Vaani",
+    "media": "Media",
     "seva": "Seva",
-    "satsang": "Satsang",
-    "gallery": "Gallery",
-    "programs": "Programs",
-    "vicharDhara": "Wisdom",
-    "daan": "Daan",
-    "sampark": "Contact",
+    "wisdom": "Wisdom",
+    "contact": "Contact",
     "sevaKarein": "Seva Karein"
   },
   "hero": {
