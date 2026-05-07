@@ -8,7 +8,7 @@ export default function LiveBanner() {
   const { data } = useSWR<{ isLive: boolean; liveUrl: string | null }>(
     '/api/youtube',
     fetcher,
-    { refreshInterval: 60_000, revalidateOnFocus: false }
+    { refreshInterval: 15 * 60 * 1000, revalidateOnFocus: false }
   )
 
   const isLive  = data?.isLive ?? false

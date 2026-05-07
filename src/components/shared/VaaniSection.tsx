@@ -146,7 +146,7 @@ export default function VaaniSection() {
   }
 
   const { data, isLoading } = useSWR<YouTubeData>('/api/youtube', fetcher, {
-    refreshInterval: 5 * 60 * 1000,
+    refreshInterval: 15 * 60 * 1000,
     revalidateOnFocus: false,
   })
 
