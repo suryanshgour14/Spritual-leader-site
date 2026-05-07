@@ -123,6 +123,9 @@ export default async function Footer() {
             </p>
             <LanguageToggle />
           </div>
+          <p className="text-center text-[10px] text-cream-400/40 mt-4 font-body tracking-wide">
+            Crafted with devotion by Yash Raj &amp; Suryansh
+          </p>
         </div>
       </div>
     </footer>
