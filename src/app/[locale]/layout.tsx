@@ -12,7 +12,6 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton'
 import MobileBottomBar from '@/components/layout/MobileBottomBar'
 import { GoogleAnalytics } from '@next/third-parties/google'
-import CookieConsent from '@/components/shared/CookieConsent'
 import '../globals.css'
 
 const tiroDevanagari = Tiro_Devanagari_Sanskrit({
@@ -178,7 +177,6 @@ export default async function LocaleLayout({
             <Footer />
             <WhatsAppFloatingButton />
             <MobileBottomBar />
-            <CookieConsent />
           </LenisProvider>
         </NextIntlClientProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
