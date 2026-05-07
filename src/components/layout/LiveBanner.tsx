@@ -1,6 +1,7 @@
 'use client'
 import useSWR from 'swr'
 import { motion, AnimatePresence } from 'framer-motion'
+import { analytics } from '@/lib/analytics'
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -21,6 +22,7 @@ export default function LiveBanner() {
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => analytics.liveBannerClicked()}
           initial={{ y: -48, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -48, opacity: 0 }}

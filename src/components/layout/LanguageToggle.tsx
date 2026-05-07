@@ -2,6 +2,7 @@
 import { useLocale } from 'next-intl'
 import { useRouter, usePathname } from '@/i18n/navigation'
 import { cn } from '@/lib/utils'
+import { analytics } from '@/lib/analytics'
 
 interface LanguageToggleProps {
   className?: string
@@ -14,6 +15,7 @@ export default function LanguageToggle({ className }: LanguageToggleProps) {
 
   const switchTo = (newLocale: 'hi' | 'en') => {
     if (newLocale === locale) return
+    analytics.languageToggled(locale, newLocale)
     if (typeof window !== 'undefined') {
       localStorage.setItem('preferred-locale', newLocale)
     }

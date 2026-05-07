@@ -4,6 +4,7 @@ import { usePathname } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { useMediaQuery } from '@/lib/hooks/useMediaQuery'
 import { useFooterVisible } from '@/lib/hooks/useFooterVisible'
+import { analytics } from '@/lib/analytics'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919999649311'
 const WA_MESSAGE = encodeURIComponent(
@@ -43,6 +44,7 @@ export default function WhatsAppFloatingButton() {
         href={WA_URL}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => analytics.whatsappClick('floating_button')}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="flex items-center justify-center rounded-full bg-green-500 shadow-lg

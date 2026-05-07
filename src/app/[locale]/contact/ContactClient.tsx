@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Phone } from 'lucide-react'
+import { analytics } from '@/lib/analytics'
 
 const WA_NUMBER = '919999649311'
 const CALL_NUMBER = '8650620909'
@@ -111,6 +112,7 @@ export default function ContactClient() {
             href={`https://wa.me/${WA_NUMBER}?text=${WA_GENERAL}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.whatsappClick('contact_main')}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
@@ -139,6 +141,10 @@ export default function ContactClient() {
                 href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(opt.message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  analytics.whatsappClick('contact_topic')
+                  if (opt.title === 'कथा आयोजन') analytics.kathaBookingInitiated(opt.title)
+                }}
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: CARD_DELAYS[i], ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
@@ -192,6 +198,7 @@ export default function ContactClient() {
           </p>
           <motion.a
             href={`tel:+91${CALL_NUMBER}`}
+            onClick={() => analytics.phoneCallClicked()}
             whileTap={{ scale: 0.97 }}
             className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-2xl
               transition-colors duration-200 select-none"

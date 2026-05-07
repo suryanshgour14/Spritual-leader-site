@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useSWR from 'swr'
 import GlowOrbs from '@/components/shared/GlowOrbs'
+import { analytics } from '@/lib/analytics'
 import RevealWrapper from '@/components/shared/RevealWrapper'
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
@@ -140,9 +141,14 @@ export default function VaaniSection() {
   const [iframeActive, setIframeActive] = useState(false)
 
   function activatePlayer(id?: string) {
+    const targetId = id ?? videos[0]?.id
     if (id) setFeaturedId(id)
     setPlayerReady(true)
     setIframeActive(true)
+    if (targetId) {
+      const title = videos.find(v => v.id === targetId)?.title ?? ''
+      analytics.videoPlayed(targetId, title)
+    }
   }
 
   const { data, isLoading } = useSWR<YouTubeData>('/api/youtube', fetcher, {
