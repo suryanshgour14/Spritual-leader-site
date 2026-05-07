@@ -590,7 +590,8 @@ export default function HomePage() {
           </div>
 
           <RevealWrapper delay={0.2} className="text-center mt-10">
-            <Link href="/seva#donate"
+            <Link
+              href="/seva"
               className="inline-flex items-center gap-2 px-6 py-3 bg-saffron-500
                 text-cream-50 rounded-full font-body text-sm font-medium
                 hover:bg-saffron-600 transition-all duration-300">

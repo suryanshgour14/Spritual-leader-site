@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import { useRouter } from '@/i18n/navigation'
 import GlowOrbs from '@/components/shared/GlowOrbs'
 import RevealWrapper from '@/components/shared/RevealWrapper'
 
@@ -34,6 +35,8 @@ function SevaPill({ text }: { text: string }) {
 }
 
 export default function AboutClient() {
+  const router = useRouter()
+
   return (
     <div className="bg-cream-100 overflow-hidden">
 
@@ -380,14 +383,17 @@ export default function AboutClient() {
                 discourses and social initiatives.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
-                <a
-                  href="/#vaani"
+                <button
+                  onClick={() => {
+                    sessionStorage.setItem('pendingScroll', 'vaani')
+                    router.push('/')
+                  }}
                   className="px-6 py-2.5 rounded-full border border-saffron-400/40
                     font-body text-sm text-saffron-700 hover:bg-saffron-50
                     transition-all duration-200"
                 >
                   Watch Pravachans →
-                </a>
+                </button>
                 <a
                   href={`https://wa.me/919999649311?text=${encodeURIComponent('Namaste Didi Ji, I want to know about Katha booking.')}`}
                   target="_blank"

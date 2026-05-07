@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/katha',   key: 'katha'   as const, scrollId: null },
   { href: '/#vaani',  key: 'vaani'   as const, scrollId: 'vaani' },
   { href: '/media',   key: 'media'   as const, scrollId: null },
-  { href: '/seva#donate', key: 'seva' as const, scrollId: null },
+  { href: '/seva',        key: 'seva' as const, scrollId: null },
   { href: '/wisdom',  key: 'wisdom'  as const, scrollId: null },
   { href: '/contact', key: 'contact' as const, scrollId: null },
 ]
@@ -67,6 +67,18 @@ export default function Navbar() {
     if (scrollId) return false
     if (href === '/') return pathname === '/'
     return pathname.startsWith(href)
+  }
+
+  function handleSevaKareinClick(e: React.MouseEvent) {
+    e.preventDefault()
+    setIsMenuOpen(false)
+    const el = document.getElementById('donate')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      sessionStorage.setItem('pendingScroll', 'donate')
+      router.push('/seva')
+    }
   }
 
   function handleScrollClick(e: React.MouseEvent, scrollId: string | null) {
@@ -142,6 +154,7 @@ export default function Navbar() {
               <LanguageToggle />
               <Link
                 href="/seva#donate"
+                onClick={handleSevaKareinClick}
                 className={cn(
                   'px-4 py-2 border rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 whitespace-nowrap',
                   isScrolled
@@ -237,7 +250,7 @@ export default function Navbar() {
               <LanguageToggle />
               <Link
                 href="/seva#donate"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={handleSevaKareinClick}
                 className="px-5 py-2.5 bg-saffron-500 text-cream-50 rounded-lg text-sm font-medium
                   hover:bg-saffron-600 transition-colors"
               >
