@@ -31,10 +31,11 @@ export interface YouTubePayload {
   configured: boolean
 }
 
-async function ytGet(path: string): Promise<any> {
+async function ytGet(path: string, revalidate: number): Promise<any> {
   const url = `https://www.googleapis.com/youtube/v3/${path}&key=${API_KEY}`
-  // cache: 'no-store' — we manage TTL ourselves via _liveCache / _videosCache
-  const res = await fetch(url, { cache: 'no-store' })
+  // next.revalidate adds Next.js Data Cache as a second layer behind our in-memory cache —
+  // helps on cold worker starts where _liveCache/_videosCache are empty
+  const res = await fetch(url, { next: { revalidate } })
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
     throw new Error(`YouTube API ${res.status}: ${JSON.stringify(err)}`)
@@ -64,7 +65,7 @@ export async function GET() {
 
     if (liveStale) {
       fetches.push(
-        ytGet(`search?part=snippet&channelId=${CHANNEL_ID}&eventType=live&type=video&maxResults=1`)
+        ytGet(`search?part=snippet&channelId=${CHANNEL_ID}&eventType=live&type=video&maxResults=1`, 1800)
           .then(data => {
             const item    = data.items?.[0]
             const videoId = item?.id?.videoId ?? null
@@ -84,7 +85,7 @@ export async function GET() {
       // Uploads playlist ID = "UU" + channelId.slice(2) — stable YouTube convention
       const uploadsId = 'UU' + CHANNEL_ID.slice(2)
       fetches.push(
-        ytGet(`playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=4`)
+        ytGet(`playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=4`, 21600)
           .then(data => {
             const videos: VideoItem[] = (data.items ?? []).map((item: any) => ({
               id:          item.snippet.resourceId.videoId,

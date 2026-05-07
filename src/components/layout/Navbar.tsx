@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import { useTranslations } from 'next-intl'
 import { Phone, Menu, X } from 'lucide-react'
 import Image from 'next/image'
-import { Link, usePathname } from '@/i18n/navigation'
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import LanguageToggle from './LanguageToggle'
 import { cn } from '@/lib/utils'
 
@@ -22,9 +22,21 @@ const navLinks = [
 export default function Navbar() {
   const t = useTranslations('nav')
   const pathname = usePathname()
+  const router = useRouter()
   const { scrollY } = useScroll()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // After cross-page navigation, scroll to pending section (e.g. /#vaani from /about)
+  useEffect(() => {
+    const target = sessionStorage.getItem('pendingScroll')
+    if (!target) return
+    sessionStorage.removeItem('pendingScroll')
+    const timer = setTimeout(() => {
+      document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' })
+    }, 150)
+    return () => clearTimeout(timer)
+  }, [pathname])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 50)
@@ -48,11 +60,16 @@ export default function Navbar() {
 
   function handleScrollClick(e: React.MouseEvent, scrollId: string | null) {
     if (!scrollId) return
+    e.preventDefault()
+    setIsMenuOpen(false)
     const el = document.getElementById(scrollId)
     if (el) {
-      e.preventDefault()
+      // Same page — scroll directly
       el.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
+    } else {
+      // Different page — store target, navigate to home, scroll after render
+      sessionStorage.setItem('pendingScroll', scrollId)
+      router.push('/')
     }
   }
 
