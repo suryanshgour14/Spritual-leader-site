@@ -27,15 +27,26 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // After cross-page navigation, scroll to pending section (e.g. /#vaani from /about)
+  // After cross-page navigation, scroll to pending section (e.g. /#vaani from /about).
+  // Polls until element appears — necessary because VaaniSection is dynamic (ssr:false)
+  // and may not be in the DOM for 500-800ms after the route change.
   useEffect(() => {
     const target = sessionStorage.getItem('pendingScroll')
     if (!target) return
     sessionStorage.removeItem('pendingScroll')
-    const timer = setTimeout(() => {
-      document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' })
-    }, 150)
-    return () => clearTimeout(timer)
+
+    let attempts = 0
+    const interval = setInterval(() => {
+      const el = document.getElementById(target)
+      if (el) {
+        clearInterval(interval)
+        el.scrollIntoView({ behavior: 'smooth' })
+      } else if (++attempts >= 30) {
+        clearInterval(interval) // give up after 3 seconds
+      }
+    }, 100)
+
+    return () => clearInterval(interval)
   }, [pathname])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
