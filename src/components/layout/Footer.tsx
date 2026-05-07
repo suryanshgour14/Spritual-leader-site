@@ -119,7 +119,7 @@ export default async function Footer() {
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-cream-400 text-xs text-center md:text-left">
-              © 2026 Sadhvi Samahita Ji · Shri Dham Vrindavan · {tFooter('rights')}
+              © 2026 Sadhvi Samahita Ji · Shri Dham Vrindavan · All Rights Reserved
             </p>
             <LanguageToggle />
           </div>
