@@ -14,10 +14,13 @@ export async function generateMetadata({
     description:
       'Photo gallery from katha events, ashram seva, and spiritual programs of Sadhvi Samahita Ji at Shri Dham Vrindavan.',
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/media`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/media'
+        : 'https://sadhvisamahita.com/en/media',
       languages: {
+        hi: 'https://sadhvisamahita.com/media',
         en: 'https://sadhvisamahita.com/en/media',
-        hi: 'https://sadhvisamahita.com/hi/media',
+        'x-default': 'https://sadhvisamahita.com/media',
       },
     },
     openGraph: {

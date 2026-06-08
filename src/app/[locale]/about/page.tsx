@@ -22,10 +22,13 @@ export async function generateMetadata({
       'साध्वी समाहिता जी',
     ],
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/about`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/about'
+        : 'https://sadhvisamahita.com/en/about',
       languages: {
+        hi: 'https://sadhvisamahita.com/about',
         en: 'https://sadhvisamahita.com/en/about',
-        hi: 'https://sadhvisamahita.com/hi/about',
+        'x-default': 'https://sadhvisamahita.com/about',
       },
     },
     openGraph: {

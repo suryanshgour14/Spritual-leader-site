@@ -12,10 +12,13 @@ export async function generateMetadata({
     description:
       'Spiritual articles, katha reflections, and life philosophy by Sadhvi Samahita Ji. Coming soon.',
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/blog`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/blog'
+        : 'https://sadhvisamahita.com/en/blog',
       languages: {
+        hi: 'https://sadhvisamahita.com/blog',
         en: 'https://sadhvisamahita.com/en/blog',
-        hi: 'https://sadhvisamahita.com/hi/blog',
+        'x-default': 'https://sadhvisamahita.com/blog',
       },
     },
   }

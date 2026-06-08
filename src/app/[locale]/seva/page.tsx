@@ -26,10 +26,13 @@ export async function generateMetadata({
       'Radhika Ashray seva',
     ],
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/seva`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/seva'
+        : 'https://sadhvisamahita.com/en/seva',
       languages: {
+        hi: 'https://sadhvisamahita.com/seva',
         en: 'https://sadhvisamahita.com/en/seva',
-        hi: 'https://sadhvisamahita.com/hi/seva',
+        'x-default': 'https://sadhvisamahita.com/seva',
       },
     },
     openGraph: {

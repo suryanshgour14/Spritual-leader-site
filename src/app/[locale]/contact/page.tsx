@@ -21,10 +21,13 @@ export async function generateMetadata({
       'Vrindavan katha',
     ],
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/contact`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/contact'
+        : 'https://sadhvisamahita.com/en/contact',
       languages: {
+        hi: 'https://sadhvisamahita.com/contact',
         en: 'https://sadhvisamahita.com/en/contact',
-        hi: 'https://sadhvisamahita.com/hi/contact',
+        'x-default': 'https://sadhvisamahita.com/contact',
       },
     },
     openGraph: {

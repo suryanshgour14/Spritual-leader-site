@@ -24,10 +24,13 @@ export async function generateMetadata({
       'श्रीमद्भागवत कथा बुकिंग',
     ],
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/katha`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/katha'
+        : 'https://sadhvisamahita.com/en/katha',
       languages: {
+        hi: 'https://sadhvisamahita.com/katha',
         en: 'https://sadhvisamahita.com/en/katha',
-        hi: 'https://sadhvisamahita.com/hi/katha',
+        'x-default': 'https://sadhvisamahita.com/katha',
       },
     },
     openGraph: {

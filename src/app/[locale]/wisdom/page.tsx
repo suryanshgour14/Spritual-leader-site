@@ -14,10 +14,13 @@ export async function generateMetadata({
     description:
       'Spiritual thoughts, reflections, and wisdom from Sadhvi Samahita Ji — inspiring quotes on bhakti, seva, and Sanatan Dharma.',
     alternates: {
-      canonical: `https://sadhvisamahita.com/${locale}/wisdom`,
+      canonical: locale === 'hi'
+        ? 'https://sadhvisamahita.com/wisdom'
+        : 'https://sadhvisamahita.com/en/wisdom',
       languages: {
+        hi: 'https://sadhvisamahita.com/wisdom',
         en: 'https://sadhvisamahita.com/en/wisdom',
-        hi: 'https://sadhvisamahita.com/hi/wisdom',
+        'x-default': 'https://sadhvisamahita.com/wisdom',
       },
     },
     openGraph: {
