@@ -70,17 +70,21 @@ export default function BlogListClient({ posts }: Props) {
             >
               <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
                 <motion.article
-                  whileHover={{ y: -4, boxShadow: '0 12px 40px rgba(212,112,10,0.15)' }}
-                  transition={{ duration: 0.22, ease: 'easeOut' }}
+                  whileHover={{ y: -4, boxShadow: '0 8px 32px rgba(180,100,10,0.18)' }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   style={{
                     background: '#FFFDF6',
                     borderRadius: '16px',
-                    border: '1px solid #E8D5B0',
+                    border: '1.5px solid #E8C88A',
                     overflow: 'hidden',
                     cursor: 'pointer',
+                    boxShadow: '0 4px 20px rgba(180,100,10,0.10)',
+                    transition: 'all 0.3s ease',
                   }}
                 >
-                  <BlogCardImage src={post.coverImage} alt={post.titleHindi || post.title} />
+                  <div style={{ borderBottom: '1px solid #E8C88A' }}>
+                    <BlogCardImage src={post.coverImage} alt={post.titleHindi || post.title} />
+                  </div>
 
                   <div style={{ padding: '20px' }}>
                     {/* Tags */}
