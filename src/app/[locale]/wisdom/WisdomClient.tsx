@@ -81,6 +81,10 @@ const articles = [
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1778048606/img134_pgxoap.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1778048605/img98_optryz.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1778048605/img92_duvi1o.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1781761763/WhatsApp_Image_2026-06-18_at_10.14.05_jxwdp4.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1781761763/WhatsApp_Image_2026-06-18_at_10.14.05_1_kpp6cp.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1781761764/WhatsApp_Image_2026-06-18_at_10.14.04_wobv4o.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1781761764/WhatsApp_Image_2026-06-18_at_10.14.05_2_f1tliu.jpg',
 ]
 
 // ── Quote block ───────────────────────────────────────────────────────────────
