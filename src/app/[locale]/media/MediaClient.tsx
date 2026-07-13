@@ -22,7 +22,7 @@ const featured = [
 const gallery = [
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_2_trcxvt.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_ycrfih.jpg',
-  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_1_tej5j7.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/a_270/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_1_tej5j7.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.53_1_niqove.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931369/WhatsApp_Image_2026-07-10_at_15.03.55_tkxjlb.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931369/WhatsApp_Image_2026-07-10_at_15.03.52_ir1yog.jpg',
