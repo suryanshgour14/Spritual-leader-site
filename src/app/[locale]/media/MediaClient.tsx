@@ -20,6 +20,31 @@ const featured = [
 
 // ── Masonry gallery (all remaining, deduped) ──────────────────────────────────
 const gallery = [
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_2_trcxvt.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_ycrfih.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.56_1_tej5j7.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931370/WhatsApp_Image_2026-07-10_at_15.03.53_1_niqove.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931369/WhatsApp_Image_2026-07-10_at_15.03.55_tkxjlb.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931369/WhatsApp_Image_2026-07-10_at_15.03.52_ir1yog.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931369/WhatsApp_Image_2026-07-10_at_15.03.55_3_j54bxx.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931369/WhatsApp_Image_2026-07-10_at_15.03.55_1_bgj39b.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931368/WhatsApp_Image_2026-07-10_at_15.03.52_2_caz3dz.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931368/WhatsApp_Image_2026-07-10_at_15.03.55_2_urahoq.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931368/WhatsApp_Image_2026-07-10_at_15.03.54_wyt3gk.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931368/WhatsApp_Image_2026-07-10_at_15.03.54_3_iruphi.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931368/WhatsApp_Image_2026-07-10_at_15.03.50_1_efmgeu.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931368/WhatsApp_Image_2026-07-10_at_15.03.50_lpenve.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931367/WhatsApp_Image_2026-07-10_at_15.03.54_2_vjl49h.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931367/WhatsApp_Image_2026-07-10_at_15.03.54_1_m3npps.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931367/WhatsApp_Image_2026-07-10_at_15.03.49_suqnbu.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931366/WhatsApp_Image_2026-07-10_at_15.03.49_2_g7qfx1.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931366/WhatsApp_Image_2026-07-10_at_15.03.48_lhgy2f.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931366/WhatsApp_Image_2026-07-10_at_15.03.49_1_vhtfjm.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931366/WhatsApp_Image_2026-07-10_at_15.03.53_3_wtvtvr.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931366/WhatsApp_Image_2026-07-10_at_15.03.53_cmuzhf.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931365/WhatsApp_Image_2026-07-10_at_15.03.53_2_qrgnll.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931365/WhatsApp_Image_2026-07-10_at_15.03.48_2_gwgqg3.jpg',
+  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1783931365/WhatsApp_Image_2026-07-10_at_15.03.48_1_dgssqw.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971953/img83_oukqvt.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971953/img65_soacbx.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971949/img4_odquej.jpg',
@@ -69,7 +94,6 @@ const gallery = [
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971897/img50_r1x5ui.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971895/img92_sdxwfi.jpg',
   'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971894/img95_s0unkm.jpg',
-  'https://res.cloudinary.com/dl9t48lyt/image/upload/v1777971911/img254_uiituf.jpg',
 ]
 
 // ── Lightbox — rendered via portal to escape any transformed ancestor ─────────
