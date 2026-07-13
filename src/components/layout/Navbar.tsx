@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Phone, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
+import LiveBanner from './LiveBanner'
 import LanguageToggle from './LanguageToggle'
 import { cn } from '@/lib/utils'
 
@@ -109,6 +110,9 @@ export default function Navbar() {
               : 'bg-transparent'
         )}
       >
+        {/* Inside the fixed nav so it stacks above the nav row and receives its own
+            clicks — as a sibling in page flow the fixed navbar covered it and ate them */}
+        <LiveBanner />
         <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-18">
 

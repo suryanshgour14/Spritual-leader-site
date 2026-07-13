@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import LenisProvider from '@/components/providers/LenisProvider'
 import PageTransition from '@/components/providers/PageTransition'
-import LiveBanner from '@/components/layout/LiveBanner'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton'
@@ -167,7 +166,6 @@ export default async function LocaleLayout({
       <body className="font-body antialiased min-h-screen bg-cream-100 text-saffron-900">
         <NextIntlClientProvider messages={messages}>
           <LenisProvider>
-            <LiveBanner />
             <Navbar />
             <main className="min-h-screen pt-16">
               <PageTransition>
